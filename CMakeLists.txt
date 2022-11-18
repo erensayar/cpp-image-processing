@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.18)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+project(ImageProcessing)
+
 if(WIN32)
     SET(COMPILER_PATH C:/MinGW/bin)
     SET(CMAKE_C_COMPILER ${COMPILER_PATH}/gcc.exe)
     SET(CMAKE_CXX_COMPILER ${COMPILER_PATH}/g++.exe)
 endif(WIN32)
-project(ImageProcessing)
 
 
 find_package(OpenCV REQUIRED)

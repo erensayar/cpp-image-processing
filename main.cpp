@@ -1,9 +1,14 @@
+#ifdef _WIN32
+// Windows
+#else
+// Unix
 #include </usr/local/include/opencv4/opencv2/opencv.hpp>
 #include </usr/local/include/opencv4/opencv2/imgcodecs.hpp>
 #include </usr/local/include/opencv4/opencv2/highgui.hpp>
 #include </usr/local/include/opencv4/opencv2/highgui/highgui.hpp>
 #include </usr/local/include/opencv4/opencv2/imgproc.hpp>
 #include <iostream>
+#endif
 
 using namespace cv;
 using namespace std;
