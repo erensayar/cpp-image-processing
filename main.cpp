@@ -16,8 +16,6 @@
 using namespace cv;
 using namespace std;
 
-#if defined(_GLIBCXX_HAS_GTHREADS) && defined(_GLIBCXX_USE_C99_STDINT_TR1)
-#endif
 
 /////////////////  Images  //////////////////////
 int main() {
