@@ -3,21 +3,25 @@
 cmake_minimum_required(VERSION 3.18)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 if(WIN32)
+    # Set Compiler DIR
     SET(COMPILER_PATH C:/MinGW/bin)
     SET(CMAKE_C_COMPILER ${COMPILER_PATH}/gcc.exe)
     SET(CMAKE_CXX_COMPILER ${COMPILER_PATH}/g++.exe)
 endif(WIN32)
 project(ImageProcessing)
 
+
 # SET PROJECT FILES
 # <==============================================================>
 set(SOURCES main.cpp)
 add_executable(ImageProcessing ${SOURCES})
 
+
 # OPENCV PROPERTIES
 # <==============================================================>
+SET(OpenCV_DIR "C:/Users/xresayar/Programs/OpenCV/4.5.5/build")
 FIND_PACKAGE(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
+INCLUDE_DIRECTORIES(${OpenCV_INCLUDE_DIRS})
 TARGET_LINK_LIBRARIES(ImageProcessing ${OpenCV_LIBS})
 
 
@@ -30,18 +34,6 @@ message(STATUS "    libraries: ${OpenCV_LIBS}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 
 
-
-
-#set(CMAKE_PREFIX_PATH C:/Users/xresayar/Programs/OpenCV/build)
+#SET(OpenCV_LIBS "C:/Users/xresayar/Programs/OpenCV/4.5.5/build/x64/mingw/lib")
+#SET(OpenCV_INCLUDE_DIRS "C:/Users/xresayar/Programs/OpenCV/4.6.0/build/include")
 #find_package(OpenCV REQUIRED PATHS C:/Users/xresayar/Programs/OpenCV/build)
-#include_directories(${OpenCV_INCLUDE_DIRS})
-#target_include_directories(ImageProcessing PUBLIC C:/Users/xresayar/Programs/OpenCV/build/include)
-#target_link_libraries(ImageProcessing PUBLIC C:/Users/xresayar/Programs/OpenCV/build/x64/vc15/lib/opencv_world460.lib)
-#TARGET_LINK_LIBRARIES(ImageProcessing ${OpenCV_LIBS})
-#SET(OpenCV_DIR C:/Users/xresayar/Programs/OpenCV/build/)
-#FIND_PACKAGE(OpenCV REQUIRED PATHS OpenCV_DIR)
-#include_directories(${OpenCV_INCLUDE_DIRS})
-#link_directories(${OpenCV_LIB_DIR})
-#target_link_libraries(ImageProcessing ${OpenCV_LIBS})
-#install(TARGETS ImageProcessing DESTINATION build)
-#target_link_libraries( DisplayImage ${OpenCV_LIBS} )
