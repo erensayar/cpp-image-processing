@@ -12,7 +12,7 @@
 using namespace cv;
 using namespace std;
 
-/////////////////  Images  //////////////////////
+// <================== Image =================>
 int main(int argc, char **argv) {
     if (argc != 2) {
         cout << ("USAGE: App <Image_Path>");
@@ -29,31 +29,31 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-///////////////  Video  //////////////////////
-// void main() {
-//
-//	string path = "Resources/test_video.mp4";
-//	VideoCapture cap(path);
-//	Mat img;
-//
-//	while (true) {
-//
-//		cap.read(img);
-//		imshow("Image", img);
-//		waitKey(20);
-//	}
-// }
+// <================== Video =================>
+/*
+int main() {
+   string path = "../resources/test_video.mp4";
+   VideoCapture cap(path);
+   Mat img;
+   while (true) {
+       cap.read(img);
+       imshow("Image", img);
+       waitKey(20);
+   }
+   return 0;
+}
+*/
 
-/////////////////  Webcam  //////////////////////
-// void main() {
-//
-//	VideoCapture cap(0);
-//	Mat img;
-//
-//	while (true) {
-//
-//		cap.read(img);
-//		imshow("Image", img);
-//		waitKey(1);
-//	}
-// }
+// <================= Webcam =================>
+/*
+int main() {
+    VideoCapture cap(0);
+    Mat img;
+    while (true) {
+        cap.read(img);
+        imshow("Image", img);
+        waitKey(1);
+    }
+    return 0;
+}
+*/
