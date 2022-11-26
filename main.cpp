@@ -12,27 +12,25 @@
 using namespace cv;
 using namespace std;
 
-
 /////////////////  Images  //////////////////////
-int main(int argc, char** argv ) {
-    if ( argc != 2 ) {
+int main(int argc, char **argv) {
+    if (argc != 2) {
         cout << ("USAGE: App <Image_Path>");
         return -1;
     }
-    Mat image = imread( argv[1], 1 );
-    if ( !image.data ) {
+    Mat image = imread(argv[1], 1);
+    if (!image.data) {
         cout << ("No image data");
         return -1;
     }
-    namedWindow("Display Image", WINDOW_AUTOSIZE );
+    namedWindow("Display Image", WINDOW_AUTOSIZE);
     imshow("Display Image", image);
     waitKey(0);
     return 0;
 }
 
-
 ///////////////  Video  //////////////////////
-//void main() {
+// void main() {
 //
 //	string path = "Resources/test_video.mp4";
 //	VideoCapture cap(path);
@@ -44,11 +42,10 @@ int main(int argc, char** argv ) {
 //		imshow("Image", img);
 //		waitKey(20);
 //	}
-//}
-
+// }
 
 /////////////////  Webcam  //////////////////////
-//void main() {
+// void main() {
 //
 //	VideoCapture cap(0);
 //	Mat img;
@@ -59,4 +56,4 @@ int main(int argc, char** argv ) {
 //		imshow("Image", img);
 //		waitKey(1);
 //	}
-//}
+// }
