@@ -6,11 +6,7 @@
 
 #else // Unix Dependencies
 #include <iostream>
-#include </usr/local/include/opencv4/opencv2/opencv.hpp>
-#include </usr/local/include/opencv4/opencv2/imgcodecs.hpp>
-#include </usr/local/include/opencv4/opencv2/highgui.hpp>
-#include </usr/local/include/opencv4/opencv2/highgui/highgui.hpp>
-#include </usr/local/include/opencv4/opencv2/imgproc.hpp>
+#include <opencv2/opencv.hpp>
 #endif
 
 using namespace cv;
@@ -18,11 +14,18 @@ using namespace std;
 
 
 /////////////////  Images  //////////////////////
-int main() {
-    //string path = "~/MEGA/CODES/C-Cpp/cpp-image-processing/resources/paper.jpg";
-    string path = "C:/Users/xresayar/Desktop/Codes/Codes-Personal/C++/cpp-image-processing/resources/paper.jpg";
-    Mat img = imread(path);
-    imshow("Image", img);
+int main(int argc, char** argv ) {
+    if ( argc != 2 ) {
+        cout << ("USAGE: App <Image_Path>");
+        return -1;
+    }
+    Mat image = imread( argv[1], 1 );
+    if ( !image.data ) {
+        cout << ("No image data");
+        return -1;
+    }
+    namedWindow("Display Image", WINDOW_AUTOSIZE );
+    imshow("Display Image", image);
     waitKey(0);
     return 0;
 }
