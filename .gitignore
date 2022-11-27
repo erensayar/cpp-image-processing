@@ -2,3 +2,4 @@
 build/
 cmake-build-debug/
 .vscode/
+cmake-build-debug-mingw
