@@ -1,7 +1,7 @@
 Developed on Linux and STILL CONTINUES
 
 
-# Requirements For Linux
+# A. Requirements For Linux
 
 # 1. Install OpenCV
 
@@ -61,10 +61,6 @@ Developed on Linux and STILL CONTINUES
 
         cmake ..
 
-    or
-    
-        cmake .. -G "MinGW Makefiles"
-
 * Build 
 
         cmake --build .
@@ -79,6 +75,51 @@ Developed on Linux and STILL CONTINUES
 
         ./ImageProcessing ../resources/paper.jpg
 
+
+# B. Requirements For Windows
+
+* CMake https://cmake.org/download/
+* MinGW https://github.com/niXman/mingw-builds-binaries/releases
+* OpenCV (Normal) https://opencv.org/releases/
+* OpenCV (Built By MinGW) https://github.com/huihut/OpenCV-MinGW-Build
+
+## 1. Setup OpenCV
+
+* Download and extract official OpenCV 
+* Download opencv_mingw_build
+* Go To -> opencv_mingw_build/x64 (you should see mingw file)
+* Copy mingw file to official OpenCV directory -> official_opencv/build/x64
+
+
+## 2. Set Path
+
+Add these values to PATH
+
+        C:\<path>\CMake\bin
+        C:\<path>\mingw64\bin
+        C:\<path>\official_opencv\build\x64\mingw\bin
+
+# 3. Build And Run
+
+## 3.1. Build :
+
+* Create directory for built file
+
+       mkdir build && cd build
+
+* Cmake run
+
+        cmake .. -G "MinGW Makefiles"
+
+* Build 
+
+        cmake --build .
+
+## 3.2. Run
+
+* Run
+
+        ./ImageProcessing <IMAGE_PATH>
 
 ## Sources
 
