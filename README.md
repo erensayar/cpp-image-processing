@@ -1,4 +1,5 @@
-Developed on Linux and STILL CONTINUES
+* DEVELOPMENT STILL CONTINUES
+* Use Linux and Windows for development
 
 
 # A. Requirements For Linux
