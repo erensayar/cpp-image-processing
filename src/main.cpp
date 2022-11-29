@@ -306,7 +306,7 @@ int main(int argc, char **argv) {
                 break;
 
             case 7:
-                warpImage(path);
+                warpImage("../resources/cards.jpg");
                 break;
 
             case 8:
