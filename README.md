@@ -141,4 +141,9 @@ If libraries has warning underline, IDE can't see library than you can change in
 
 ## Sources
 
-* Murtaza Workshops - Resource's from Murtaza and I will complete him lesson.
+* Murtaza Workshops 
+
+        www.computervision.zone
+        www.youtube.com/@murtazasworkshop
+
+Resource's and codes taken from Murtaza.
