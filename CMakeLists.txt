@@ -35,7 +35,7 @@ project(ImageProcessing)
 # SET PROJECT FILES
 # <==============================================================>
 set(SOURCES 
-    main.cpp)
+      src/main.cpp)
 add_executable(ImageProcessing ${SOURCES})
 
 
