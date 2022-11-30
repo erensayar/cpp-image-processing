@@ -15,6 +15,10 @@
 #include <opencv2/imgproc.hpp>
 #endif
 
+#include "VirtualPaint.hpp"
+#include "DocumentScanner.hpp"
+#include "LicensePlateRecognition.hpp"
+
 using namespace cv;
 using namespace std;
 
@@ -35,6 +39,7 @@ void showImage(Mat image){
     waitKey(0);
 }
 
+// <=====================================================================================>
 void videoCapture(string path){
    VideoCapture cap(path);
    Mat img;
@@ -45,6 +50,7 @@ void videoCapture(string path){
    }
 }
 
+// <=====================================================================================>
 void webcamCapture() {
     VideoCapture cap(0);
     Mat img;
@@ -55,6 +61,7 @@ void webcamCapture() {
     }
 }
 
+// <=====================================================================================>
 void basicImageProcess(string path) {
     Mat img = imread(path);
 	Mat imgGray, imgBlur, imgCanny, imgDil, imgErode;
@@ -76,6 +83,7 @@ void basicImageProcess(string path) {
 	waitKey(0);
 }
 
+// <=====================================================================================>
 void resizeAndCorp(string path){
 	Mat img = imread(path);
 	Mat imgResize, imgCrop;
@@ -92,6 +100,7 @@ void resizeAndCorp(string path){
 	waitKey(0);
 }
 
+// <=====================================================================================>
 void drawsShapeAndText() {
     // Blank Image 
 	Mat img(512, 512, CV_8UC3, Scalar(255, 255, 255));
@@ -106,6 +115,7 @@ void drawsShapeAndText() {
 	waitKey(0);
 }
 
+// <=====================================================================================>
 void warpImage(string path) {
 	Mat img = imread(path);
 	Mat matrix, imgWarp;
@@ -126,6 +136,7 @@ void warpImage(string path) {
 	waitKey(0);
 }
 
+// <=====================================================================================>
 void colorDetection(string path) {
     Mat img = imread(path);
 	Mat imgHSV, mask;
@@ -154,6 +165,8 @@ void colorDetection(string path) {
 	}
 }
 
+// shapeAndContourDetection
+// <=====================================================================================>
 void getContours(Mat imgDil, Mat img) {
  
 	vector<vector<Point>> contours;
@@ -222,6 +235,7 @@ void shapeAndContourDetection(string path) {
 	waitKey(0);
 }
 
+// <=====================================================================================>
 void faceDetection(string path) {
     Mat img = imread(path);
  
@@ -240,10 +254,41 @@ void faceDetection(string path) {
 	waitKey(0);
 }
 
+// <=====================================================================================>
+void colorPicker() {
+    VideoCapture cap(0);
+    Mat img;
+    Mat imgHSV, mask, imgColor;
+    int hmin = 0, smin = 0, vmin = 0;
+    int hmax = 179, smax = 255, vmax = 255;
+ 
+    namedWindow("Trackbars", (640, 200)); // Create Window
+    createTrackbar("Hue Min", "Trackbars", &hmin, 179);
+    createTrackbar("Hue Max", "Trackbars", &hmax, 179);
+    createTrackbar("Sat Min", "Trackbars", &smin, 255);
+    createTrackbar("Sat Max", "Trackbars", &smax, 255);
+    createTrackbar("Val Min", "Trackbars", &vmin, 255);
+    createTrackbar("Val Max", "Trackbars", &vmax, 255);
+ 
+    while (true) {
+        cap.read(img);
+        cvtColor(img, imgHSV, COLOR_BGR2HSV);
+ 
+        Scalar lower(hmin, smin, vmin);
+        Scalar upper(hmax, smax, vmax);
+ 
+        inRange(imgHSV, lower, upper, mask);
+        // hmin, smin, vmin, hmax, smax, vmax;
+        cout << hmin << "," << smin << "," << vmin << "," << hmax << "," << smax << "," << vmax << endl;
+        imshow("Image", img);
+        imshow("Mask", mask);
+        waitKey(1);
+    }
+}
+
 
 // MAIN
 // <====================================================================================>
-
 int main(int argc, char **argv) {
 
     int input;
@@ -259,7 +304,7 @@ int main(int argc, char **argv) {
         cout << "Choose Process" << endl;
         cout << "1. Show Image" << endl;
         cout << "2. Video Capture" << endl;
-        cout << "3. Show Video" << endl;
+        cout << "3. Webcam Capture" << endl;
         cout << "4. Basic Image Processes" << endl;
         cout << "5. Resize And Corp" << endl;
         cout << "6. Draw Shapes & Text" << endl;
@@ -267,6 +312,10 @@ int main(int argc, char **argv) {
         cout << "8. Color Detection" << endl;
         cout << "9. Shape And Contour Detection" << endl;
         cout << "10. Face Detection" << endl;
+        cout << "11. Color Picker" << endl;
+        cout << "12. Virtual Paint" << endl;
+        cout << "13. Document Scanner" << endl;  
+        cout << "14. License Plate Recognition" << endl;              
 
         cout << "INPUT: ";
         cin >> input; 
@@ -286,7 +335,7 @@ int main(int argc, char **argv) {
                     cin >> path;
                 }
                 */
-                videoCapture("../resources/shapes.png");
+                videoCapture("../resources/test_video.mp4");
                 break;
 
             case 3:
@@ -320,6 +369,22 @@ int main(int argc, char **argv) {
             case 10:
                 faceDetection("../resources/presidents.jpg");
                 break;      
+
+            case 11:
+                colorPicker();
+                break;     
+
+            case 12:
+                virtualPaint();
+                break;     
+
+            case 13:
+                documentScanner("../resources/paper.jpg");
+                break;     
+                
+            case 14:
+                licensePlateRecognition();
+                break;     
 
             default:
                 cout << "Enter valid value\n";

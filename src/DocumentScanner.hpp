@@ -1,0 +1,1 @@
+void documentScanner(std::string path);

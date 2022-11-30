@@ -2,6 +2,16 @@
 * Linux and Windows used during development
 
 
+# Aplication Screenshots
+
+![Face_Detection](dev-doc/images_for_readme/Face_Detection.png)
+![Warp_Image](dev-doc/images_for_readme/Warp_Image.png)
+![Basic_Image_Process](dev-doc/images_for_readme/Basic_Image_Process.png)
+![Document_Scanner](dev-doc/images_for_readme/Document_Scanner.png)
+![Draw_Shapes&Text](dev-doc/images_for_readme/Draw_Shapes&Text.png)
+![Resize_And_Corp](dev-doc/images_for_readme/Resize_And_Corp.png)
+![Shape_And_Contour_Detection](dev-doc/images_for_readme/Shape_And_Contour_Detection.png)
+
 # A. Linux Requirements
 
 # 1. Install OpenCV

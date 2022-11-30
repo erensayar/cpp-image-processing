@@ -35,6 +35,9 @@ project(ImageProcessing)
 # SET PROJECT FILES
 # <==============================================================>
 set(SOURCES 
+      src/VirtualPaint.cpp
+      src/DocumentScanner.cpp
+      src/LicensePlateRecognition.cpp
       src/main.cpp)
 add_executable(ImageProcessing ${SOURCES})
 
