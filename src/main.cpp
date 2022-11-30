@@ -286,6 +286,14 @@ void colorPicker() {
     }
 }
 
+// <=====================================================================================>
+void clearTerminalOutput() {
+    #ifdef _WIN32
+        system("cls");
+    #else 
+        system("clear");
+    #endif
+}
 
 // MAIN
 // <====================================================================================>
@@ -301,7 +309,8 @@ int main(int argc, char **argv) {
     //cin >> path;
 
     while (loopVal) {
-        cout << "Choose Process" << endl;
+        clearTerminalOutput();
+        cout << "\nChoose Process" << endl;
         cout << "1. Show Image" << endl;
         cout << "2. Video Capture" << endl;
         cout << "3. Webcam Capture" << endl;
@@ -317,7 +326,7 @@ int main(int argc, char **argv) {
         cout << "13. Document Scanner" << endl;  
         cout << "14. License Plate Recognition" << endl;              
 
-        cout << "INPUT: ";
+        cout << "\nINPUT: ";
         cin >> input; 
 
         switch(input) {
