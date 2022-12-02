@@ -15,7 +15,7 @@
 #include <opencv2/imgproc.hpp>
 #endif
 
-#include "VirtualPaint.hpp"
+#include "../interface/VirtualPaint.hpp"
 
 using namespace cv;
 using namespace std;

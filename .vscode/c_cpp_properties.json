@@ -5,6 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src",
+                "${workspaceFolder}/src/impl",
+                "${workspaceFolder}/src/interface",
                 "C:\\mingw64\\x86_64-w64-mingw32\\include"
             ],
             "defines": [

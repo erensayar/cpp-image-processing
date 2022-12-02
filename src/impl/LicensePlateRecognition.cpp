@@ -15,7 +15,7 @@
 #include <opencv2/imgproc.hpp>
 #endif
 
-#include "LicensePlateRecognition.hpp"
+#include "../interface/LicensePlateRecognition.hpp"
 
 using namespace cv;
 using namespace std;

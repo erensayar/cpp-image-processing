@@ -1,40 +1,22 @@
 #ifdef _WIN32 // Windows Dependencies
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 
 #else // Unix Dependencies
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 #endif
 
-#include "DocumentScanner.hpp"
+#include "../interface/DocumentScanner.hpp"
+#include "../interface/Common.hpp"
 
 using namespace cv;
 using namespace std;
 
 
-Mat imgOriginal, imgGray, imgBlur, imgCanny, imgThre, imgDil, imgErode, imgWarp, imgCrop;
+Mat imgOriginal, imgWarp, imgCrop, imgThre;
 vector<Point> initialPoints,docPoints;
 float w = 420, h = 596;
-
-
-Mat preProcessing(Mat img) {
-	cvtColor(img, imgGray, COLOR_BGR2GRAY);
-	GaussianBlur(imgGray, imgBlur, Size(3, 3), 3, 0);
-	Canny(imgBlur, imgCanny, 25, 75);
-	Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
-	dilate(imgCanny, imgDil, kernel);
-	//erode(imgDil, imgErode, kernel);
-	return imgDil;
-}
  
 vector<Point> getContourss(Mat image) {
 	vector<vector<Point>> contours;
@@ -50,8 +32,7 @@ vector<Point> getContourss(Mat image) {
  
 	for (int i = 0; i < contours.size(); i++) {
 		int area = contourArea(contours[i]);
-		//cout << area << endl;
- 
+		cout << area << endl;
 		string objectType;
  
 		if (area > 1000) {
@@ -86,7 +67,7 @@ vector<Point> reorder(vector<Point> points) {
 		subPoints.push_back(points[i].x - points[i].y);
 	}
  
-	newPoints.push_back(points[min_element(sumPoints.begin(), sumPoints.end()) - sumPoints.begin()]); // 0
+	newPoints.push_back(points[min_element(sumPoints.begin(), sumPoints.end()) - sumPoints.begin()]); //0
 	newPoints.push_back(points[max_element(subPoints.begin(), subPoints.end()) - subPoints.begin()]); //1
 	newPoints.push_back(points[min_element(subPoints.begin(), subPoints.end()) - subPoints.begin()]); //2
 	newPoints.push_back(points[max_element(sumPoints.begin(), sumPoints.end()) - sumPoints.begin()]); //3
@@ -110,7 +91,7 @@ void documentScanner(string path) {
 	//resize(imgOriginal, imgOriginal, Size(), 0.5, 0.5);
  
 	// Preprpcessing - Step 1 
-	imgThre = preProcessing(imgOriginal);
+	imgThre = preProcessing(imgOriginal, 3, 3, false);
  
 	// Get Contours - Biggest  - Step 2
 	initialPoints = getContourss(imgThre);

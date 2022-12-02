@@ -155,5 +155,6 @@ If libraries has warning underline, IDE can't see library than you can change in
 
         www.computervision.zone
         www.youtube.com/@murtazasworkshop
+        https://www.youtube.com/watch?v=2FYm3GOonhk
 
 Resource's and codes taken from Murtaza.
